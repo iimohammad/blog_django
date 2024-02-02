@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Detail</title>
+</head>
+<body>
+
+{% if article %}
+    <article>
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <p>Published on: {{ article.published_date }}</p>
+
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in article.comments.all %}
+                <li>
+                    <p>{{ comment.text }}</p>
+                    <p>Posted by: {{ comment.author }} on {{ comment.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        
+    </article>
+{% else %}
+    <p>Article not found</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Articles</title>
+</head>
+<body>
+
+<h1>Search Articles</h1>
+
+<form method="get" action="{% url 'search_articles' %}">
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="q" required>
+    <button type="submit">Search</button>
+</form>
+
+{% if articles %}
+    <h2>Search Results</h2>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content }}</p>
+                <p>Published on: {{ article.published_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+</body>
+</html>
